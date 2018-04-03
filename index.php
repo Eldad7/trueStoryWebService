@@ -1,6 +1,6 @@
 <?php
 	//error_reporting(0);
-	require __DIR__.'/../vendor/autoload.php';
+	require __DIR__.'/vendor/autoload.php';
 	$username = 'hola.halo777';
 	$password = 'lama!!123';
 	$debug = false;
