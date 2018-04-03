@@ -12,8 +12,7 @@
 			    'Connection: Keep-Alive'
 		    ));
 			curl_setopt($ch, CURLOPT_POST, 1);
-			if (!is_null($action))
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
