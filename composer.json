@@ -2,5 +2,12 @@
     "require": {
         "mgp25/instagram-php": "^3.1",
         "google/apiclient": "^2.0"
+    },
+    "script": {
+    	"post-install-cmd": [
+     		"php artisan clear-compiled",
+     		"php artisan optimize",
+     		"chmod -R 777 public/"
+ 		]
     }
 }
