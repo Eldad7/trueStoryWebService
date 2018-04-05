@@ -1,16 +1,24 @@
 <?php
 	try{
-		$uid = $ig->people->getUserIdForName($idolName);
-		$response = json_decode(json_encode($ig->people->getInfoById($uid)));
+		$url = 'http://www.instagram.com/'.$idolName.'/?__a=1';
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_HEADER,0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		$response = curl_exec($ch);
+		echo curl_error($ch);
+		curl_close($ch);
+		$responseArray = json_decode($response,true);
 		$resultArray['data'] = array(
-									'userID' => $uid,
-									'username' 			=> $response->user->username,
-									'fullName' 			=> $response->user->full_name != '' ? $response->user->full_name : false,
-									'profilePicture' 	=> !is_null($response->user->hd_profile_pic_url_info->url) ? $response->user->hd_profile_pic_url_info->url : false,
+									'userID' 			=> $responseArray['graphql']['user']['id'],
+									'username' 			=> $responseArray['graphql']['user']['username'],
+									'fullName' 			=> $responseArray['graphql']['user']['full_name'] != '' ? $responseArray['graphql']['user']['full_name'] : false,
+									'profilePicture' 	=> !is_null($responseArray['graphql']['user']['profile_pic_url_hd']) ? $responseArray['graphql']['user']['profile_pic_url_hd'] : false,
 									'counts' => array(
-											'Followers' => $response->user->follower_count,
-											'Following' => $response->user->following_count, 
-											'Media' => $response->user->media_count
+											'Followers' => $responseArray['graphql']['user']['edge_followed_by']['count'],
+											'Following' => $responseArray['graphql']['user']['edge_follow']['count'], 
+											'Media' => $responseArray['graphql']['user']['edge_owner_to_timeline_media']['count']
 										)
 									);
 	}
@@ -18,9 +26,4 @@
 		$resultArray['result'] = 1;
 		$resultArray['resultText'] = substr($e->getMessage(),strpos($e->getMessage(), ' ')+1);
 	}
-	///
-	//if ($response->status=='ok')
-	//	echo 'blabla';
-	//else
-	//	echo 'blublu';
 ?>

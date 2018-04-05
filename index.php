@@ -1,20 +1,5 @@
 <?php
-	//error_reporting(0);
-	require __DIR__.'/vendor/autoload.php';
-	$username = 'hola.halo777';
-	$password = 'lama!!123';
-	$debug = false;
-	$truncatedDebug = false;
-
-	$ig = new \InstagramAPI\Instagram($debug, $truncatedDebug);
 	
-	try {
-	    $ig->login($username, $password);
-	    //$rankToken = \InstagramAPI\Signatures::generateUUID();
-	} catch (\Exception $e) {
-	    echo 'Something went wrong: '.$e->getMessage()."\n";
-	    exit(0);
-	}
 	//Necessary params
 	$request = $_POST['request'];
 	$debug = isset($_POST['debug']) ? $_POST['debug'] : 0;
