@@ -12,17 +12,17 @@
 
 	
 	if (strcmp($request, 'getIdol')==0) {
-		$idolName = $_POST['idolName'];
+		$idolNames = $_POST['idolNames'];
 		include_once "getIdol.php";
 	}
 
 	else if (strcmp($request, 'insertIdol')==0) {
-		$uid = $_POST['uid'];
+		$username = $_POST['username'];
 		include_once "insertIdol.php";
 	}
 
 	else if (strcmp($request, 'getResults')==0) {
-		$uid = $_POST['uid'];
+		$uids = $_POST['uids'];
 		include_once "getResults.php";
 	}
 
@@ -33,14 +33,5 @@
 	
 
 	echo json_encode($resultArray);
-	/*include_once '/getDriveAccess.php';
-		$file = new Google_Service_Drive_DriveFile;
-		$file->setName('test');
-		$file->setFileExtension('json');
-		$response = $service->files->create($file,array(
-		  'mimeType' => '',
-		  'uploadType' => 'media'
-		));
-		var_dump($response);*/
 ?>
 
