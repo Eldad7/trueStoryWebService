@@ -22,7 +22,7 @@
 	}
 
 	else if (strcmp($request, 'getResults')==0) {
-		$uids = $_POST['uids'];
+		$uid = $_POST['uid'];
 		include_once "getResults.php";
 	}
 
