@@ -1,4 +1,5 @@
 <?php
+	$resultArray['data'] = array();
 	foreach ($idolNames as $idolName) {
 		try{
 			$url = 'http://www.instagram.com/'.$idolName.'/';
@@ -21,7 +22,7 @@
 				$end = strrpos($js, ';');
 				$json = substr($js, $start, $end - $start);
 				$responseArray = json_decode($json, true);
-				$resultArray[$idolName]['data'] = array(
+				array_push($resultArray['data'],array(
 										'userID' 			=> $responseArray['entry_data']['ProfilePage'][0]['graphql']['user']['id'],
 										'username' 			=> $responseArray['entry_data']['ProfilePage'][0]['graphql']['user']['username'],
 										'fullName' 			=> $responseArray['entry_data']['ProfilePage'][0]['graphql']['user']['full_name'] != '' ? $responseArray['entry_data']['ProfilePage'][0]['graphql']['user']['full_name'] : false,
@@ -31,7 +32,7 @@
 												'Following' => $responseArray['entry_data']['ProfilePage'][0]['graphql']['user']['edge_follow']['count'], 
 												'Media' => $responseArray['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']['count']
 											)
-										);
+										));
 			}
 		}
 		catch (Exception $e) {
