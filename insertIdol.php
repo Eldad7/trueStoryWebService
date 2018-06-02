@@ -11,7 +11,7 @@
 							'collected' => false,
 							'profilePicture' => $resultArray[$username]['data']['profilePicture'],
 							'fullName'	=> $resultArray[$username]['data']['fullName'],
-							'selfFollow'	=>	isset($_POST['getSelfFollow']) ? $_POST['getSelfFollow'] : false
+							'selfFollow'	=>	isset($_POST['selfFollow']) ? $_POST['selfFollow'] : false
 						);
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
