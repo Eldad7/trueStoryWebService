@@ -54,7 +54,7 @@
 			curl_close($ch);
 			$user = json_decode($response,true);
 			if (count($user)>0)
-				$resultArray['data']['timestamp'] = $user['timestamp'];
+				$resultArray['data']['timestamp'] = $user['lastModified'];
 		}
 		catch (Exception $e) {
 			$resultArray[$idolName]['data'] = false;
