@@ -36,7 +36,7 @@
 			}
 			//Check if user exists on our DB - if yes - say when is the latests analysis
 			$url = 'https://api.mlab.com/api/1/databases/analysis/collections/idols';
-			$url.='?q={"_id":"'.$resultArray['data']['userID'].'"}';
+			$url.='?q={"_id":"'.$responseArray['entry_data']['ProfilePage'][0]['graphql']['user']['id'].'"}';
 			$url.='&apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc&';
 			
 			//Get all idols where no data has been collected for yet
@@ -54,7 +54,7 @@
 			curl_close($ch);
 			$user = json_decode($response,true);
 			if (count($user)>0)
-				$resultArray['data']['timestamp'] = $user['lastModified'];
+				$resultArray['data']['timestamp'] = $user[0]['lastModified'];
 		}
 		catch (Exception $e) {
 			$resultArray[$idolName]['data'] = false;
