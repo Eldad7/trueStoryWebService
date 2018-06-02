@@ -1,5 +1,6 @@
 <?php
 	$idolNames = array($username);
+
 	if (!empty($idolNames)) { 
 		try{
 			include_once "getIdol";
@@ -9,7 +10,8 @@
 							'timestamp' => time(),
 							'collected' => false,
 							'profilePicture' => $resultArray[$username]['data']['profilePicture'],
-							'fullName'	=> $resultArray[$username]['data']['fullName']
+							'fullName'	=> $resultArray[$username]['data']['fullName'],
+							'selfFollow'	=>	isset($_POST['getSelfFollow']) ? $_POST['getSelfFollow'] : false
 						);
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
