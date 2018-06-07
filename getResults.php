@@ -46,7 +46,7 @@
 			
 			array_push($followerResults, array('username'			=>	$response['username'],
 												'profilePicture'	=>	$response['profilePicture'],
-												'results'			=>	$response['results']));
+												'results'			=>	isset($response['trackingResults']) ? $response['trackingResults'] : $response['analysisResults']);
 		}
 		$resultArray['data']['results'] = $followerResults;
 	}
