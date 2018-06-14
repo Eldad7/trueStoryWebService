@@ -45,7 +45,7 @@
 			$response = json_decode($response,true)[0];
 			array_push($followerResults, array('username'			=>	$response['username'],
 												'results'			=>	isset($response['trackingResults']) ? $response['trackingResults'] : array(
-																		'bot' => $response['analysisResults'] > 50 ? true : false,
+																		'isBot' => $response['analysisResults'] > 50 ? true : false,
 																		'certainty' => $response['analysisResults']
 																		)
 												));
