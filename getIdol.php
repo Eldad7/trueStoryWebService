@@ -43,9 +43,6 @@
 							$idol['timestamp'] = $user[0]['lastModified'];
 
 						array_push($resultArray['data'],$idol);
-						//If it is the exact username or full name, we can stop
-						if (strcmp($idol['username'],$idolName)==0 || strcmp($idol['fullName'], $idolName)==0)
-							break;
 					}
 				}
 			}
@@ -78,6 +75,7 @@
 		}
 		//Irrelevant text prior to links - we will replace it with an extreme case fix
 		$linksArr[0] = $baseURL.$keyWord;
+		print_r($linksArr);
 		return $linksArr;
 	}
 
