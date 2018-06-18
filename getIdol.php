@@ -75,7 +75,6 @@
 		}
 		//Irrelevant text prior to links - we will replace it with an extreme case fix
 		$linksArr[0] = $baseURL.$keyWord;
-		print_r($linksArr);
 		return $linksArr;
 	}
 
