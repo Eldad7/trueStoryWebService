@@ -1,9 +1,13 @@
 <?php
 	$resultArray['data'] = array();
+	$directUsernameSearch = isset($_POST['username']) ? $_POST['username'] : true;
 	foreach ($idolNames as $idolName) {
 		try{
 			$idol = array();
-			$urls = getURLs($idolName);
+			if (!$directUsernameSearch)
+				$urls = getURLs($idolName);
+			else
+				$urls  = array('https://www.instagram.com/'.$idolName);
 			foreach ($urls as $url) {
 				$ch = curl_init($url);
 				curl_setopt($ch, CURLOPT_HEADER,0);
