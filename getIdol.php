@@ -1,10 +1,9 @@
 <?php
 	$resultArray['data'] = array();
-	$directUsernameSearch = isset($_POST['username']) ? $_POST['username'] : true;
 	foreach ($idolNames as $idolName) {
 		try{
 			$idol = array();
-			if (!$directUsernameSearch)
+			if (!$directUsernameSearch) 
 				$urls = getURLs($idolName);
 			else
 				$urls  = array('https://www.instagram.com/'.$idolName);
