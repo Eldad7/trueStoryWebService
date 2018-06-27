@@ -7,7 +7,7 @@
 		header('Pragma: no-cache');
 		header('Expires: 0');
 		$fp = fopen('php://output', 'w');
-		$url = 'https://api.mlab.com/api/1/databases/analysis/collections/users?q={"trackingResults":{"$exists":true}}&apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc';
+		$url = 'https://api.mlab.com/api/1/databases/analysis/collections/trainingResults?q={"trackingResults":{"$exists":true}}&apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc';
 		
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
