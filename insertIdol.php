@@ -3,7 +3,7 @@
 
 	if (!empty($idolNames)) { 
 		try{
-			include_once "getIdol";
+			include_once "getIdol.php";
 
 			$url = 'https://api.mlab.com/api/1/databases/analysis/collections/idols?apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc';
 			$data = array( '_id' => $resultArray[$username]['data']['userID'],
