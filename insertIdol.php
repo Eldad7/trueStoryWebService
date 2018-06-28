@@ -9,10 +9,10 @@
 			$data = array( '_id' => $resultArray['data'][0]['userID'],
 							'lastModified' => microtime(true),
 							'collected' => false,
-							'profilePicture'	=>	$resultArray[$username]['data']['profilePicture'],
-							'fullName'			=>  $resultArray[$username]['data']['fullName'],
+							'profilePicture'	=>	$resultArray['data'][0]['profilePicture'],
+							'fullName'			=>  $resultArray['data'][0]['fullName'],
 							'userName'			=>  $username,
-							'counts'			=>	$resultArray[$username]['data']['counts'],
+							'counts'			=>	$resultArray['data'][0]['counts'],
 							'selfFollow'		=>	isset($_POST['selfFollow']) ? $_POST['selfFollow'] : false
 						);
 			$ch = curl_init($url);
@@ -27,7 +27,7 @@
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			$response = curl_exec($ch);
 			curl_close($ch);
-			$resultArray['data'] = $data;
+			$resultArray['data'] = json_decode($response,true);
 		}
 		catch (Exception $e) {
 			$resultArray['result'] = 1;
