@@ -27,7 +27,7 @@
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			$response = curl_exec($ch);
 			curl_close($ch);
-			$resultArray['data'] = $response;
+			$resultArray['data'] = $data;
 		}
 		catch (Exception $e) {
 			$resultArray['result'] = 1;
