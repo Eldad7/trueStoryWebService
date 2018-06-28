@@ -13,7 +13,7 @@
 							'fullName'			=>  $resultArray['data'][0]['fullName'],
 							'userName'			=>  $username,
 							'counts'			=>	$resultArray['data'][0]['counts'],
-							'selfFollow'		=>	isset($_POST['selfFollow']) ? $_POST['selfFollow'] : false
+							'selfFollow'		=>	$_POST['selfFollow'] ? 1 : 0
 						);
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
