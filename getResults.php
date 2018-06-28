@@ -23,7 +23,8 @@
 									'username'			=>	$user['userName'],
 									'fullName'			=>	$user['fullName'],
 									'profilePicture'	=>	$user['profilePicture'],
-									'counts'			=>	$user['counts']
+									'counts'			=>	$user['counts'],
+									'final'				=>  true
 									);
 		$followerResults = array();
 		foreach ($user['followers'][0] as $follower) {
@@ -45,6 +46,8 @@
 			$response = curl_exec($ch);
 			curl_close($ch);
 			$response = json_decode($response,true)[0];
+			if (empty($response))
+				$resultArray['data']['final'] = false;
 			array_push($followerResults, $response);
 		}
 		$resultArray['data']['results'] = $followerResults;
