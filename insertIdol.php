@@ -6,7 +6,7 @@
 			include_once "getIdol.php";
 
 			$url = 'https://api.mlab.com/api/1/databases/analysis/collections/idols?apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc';
-			$data = array( '_id' => $resultArray[$username]['data']['userID'],
+			$data = array( '_id' => $resultArray['data'][0]['userID'],
 							'lastModified' => microtime(true),
 							'collected' => false,
 							'profilePicture'	=>	$resultArray[$username]['data']['profilePicture'],
