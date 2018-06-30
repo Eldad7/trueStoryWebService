@@ -26,7 +26,7 @@
 									'counts'			=>	$user['counts'],
 									'final'				=>  true
 									);
-		$followerResults = array('fake'	=>	0, 'certainty'	=>	0);
+		$followerResults = array('fake'	=>	0, 'real' => count($user['followers'][0]), 'certainty'	=>	0);
 		$url = 'https://api.mlab.com/api/1/databases/analysis/collections/users';
 		$url.='?q={"_id":{"$in":'.json_encode($user['followers'][0],true).'}}';
 		$url.='&apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc&';
@@ -46,9 +46,10 @@
 		//See if final results
 		if (count($response) != count($user['followers'][0]))
 			$resultArray['data']['final'] = false;
-		
+
 		foreach ($response as $follower) {	
 			$followerResults['fake'] += $follower['results']['isBot'];
+			$followerResults['real'] -= $follower['results']['isBot'];
 		}
 		$resultArray['data']['results'] = $followerResults;
 	}

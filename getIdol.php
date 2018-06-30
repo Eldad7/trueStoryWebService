@@ -2,6 +2,7 @@
 	$resultArray['data'] = array();
 	foreach ($idolNames as $idolName) {
 		try{
+			$duplicateArray = array();
 			$idol = array();
 			if (!$directUsernameSearch) 
 				$urls = getURLs($idolName);
@@ -44,19 +45,18 @@
 						$user = getIdolFromDB($idol['userID']);
 						if (count($user)>0)
 							$idol['timestamp'] = $user[0]['lastModified'];
-
-						array_push($resultArray['data'],$idol);
-						//$resultArray['data'] = array_unique($resultArray['data']);
+						if (!in_array($idol['userID'], $duplicateArray)) {
+							array_push($resultArray['data'],$idol);
+							array_push($duplicateArray,$idol['userID']);
+						}
 					}
 				}
 			}
-
 		}
 		catch (Exception $e) {
 			$resultArray[$idolName]['data'] = false;
 		}
 	}
-
 
 	function getURLs($keyWord) {
 		//In case of username, to make a correct search
