@@ -49,6 +49,7 @@
 					}
 				}
 			}
+			$resultArray['data'] = array_unique($resultArray['data']);
 		}
 		catch (Exception $e) {
 			$resultArray[$idolName]['data'] = false;
