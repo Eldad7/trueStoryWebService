@@ -4,7 +4,7 @@
 	if (!empty($idolNames)) { 
 		try{
 			include_once "getIdol.php";
-			print_r($resultArray['data'][0]);
+			
 			$url = 'https://api.mlab.com/api/1/databases/analysis/collections/idols?apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc';
 			$data = array( '_id' => $resultArray['data'][0]['userID'],
 							'lastModified' => microtime(true),
