@@ -48,7 +48,7 @@
 			$resultArray['data']['final'] = false;
 		
 		foreach ($response as $follower) {	
-			$resultArray['fake'] += $follower['results']['isBot'];
+			$followerResults['fake'] += $follower['results']['isBot'];
 		}
 		$resultArray['data']['results'] = $followerResults;
 	}
