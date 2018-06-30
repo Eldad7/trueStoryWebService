@@ -46,10 +46,11 @@
 							$idol['timestamp'] = $user[0]['lastModified'];
 
 						array_push($resultArray['data'],$idol);
+						$resultArray['data'] = array_unique($resultArray['data']);
 					}
 				}
 			}
-			$resultArray['data'] = array_unique($resultArray['data']);
+
 		}
 		catch (Exception $e) {
 			$resultArray[$idolName]['data'] = false;
